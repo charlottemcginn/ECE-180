@@ -7,6 +7,7 @@
 #       References:
 #           https://github.com/opencv/opencv/blob/3.4/samples/python/tutorial_code/objectDetection/cascade_classifier/objectDetection.py
 #           https://sublimerobots.com/2015/02/dancing-mustaches/
+#           https://docs.opencv.org/3.4/db/d28/tutorial_cascade_classifier.html
 #-----------------------------------------------------------------------------
  
 
@@ -22,17 +23,10 @@ import argparse
 # Load our overlay image: doge.png
 imgDoge = cv.imread('doge.png',-1)
  
-# Create the mask for doge
-orig_mask = imgDoge[:,:,3]
- 
-# Create the inverted mask for doge
-orig_mask_inv = cv.bitwise_not(orig_mask)
- 
 # Convert doge image to BGR
 # and save the original image size (used later when re-sizing the image)
 imgDoge = imgDoge[:,:,0:3]
 origDogeHeight, origDogeWidth = imgDoge.shape[:2]
-
 
 def detectAndDisplay(frame):
     frame_gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
