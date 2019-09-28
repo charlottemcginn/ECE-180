@@ -24,7 +24,7 @@ import argparse
 imgDoge = cv.imread('doge.png',-1)
  
 # Convert doge image to BGR
-# and save the original image size (used later when re-sizing the image)
+# and save the original image size
 imgDoge = imgDoge[:,:,0:3]
 origDogeHeight, origDogeWidth = imgDoge.shape[:2]
 
@@ -35,10 +35,8 @@ def detectAndDisplay(frame):
     #-- Detect faces
     faces = face_cascade.detectMultiScale(frame_gray)
     for (x,y,w,h) in faces:
-        center = (x + w//2, y + h//2)
         #frame = cv.rectangle(frame, (x,y), (x+w, y+h), (255, 0, 255), -1)
         frame[y:y+imgDoge.shape[0], x:x+imgDoge.shape[1]] = imgDoge
-        faceROI = frame_gray[y:y+h,x:x+w]
         
     cv.imshow('Capture - Face detection', frame)
 
